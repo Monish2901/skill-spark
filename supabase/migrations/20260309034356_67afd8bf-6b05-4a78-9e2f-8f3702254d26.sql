@@ -1,0 +1,1 @@
+ALTER TABLE public.assessment_attempts ADD COLUMN time_taken_seconds integer DEFAULT NULL;
