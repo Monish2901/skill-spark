@@ -84,5 +84,36 @@ To run the project locally, follow these steps:
 
 ---
 
+## 📁 Project Structure
+
+```text
+skill-spark/
+├── frontend/               # React frontend (Vite + TypeScript)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── assessment/ # MCQ, Theory, and Practical evaluation units
+│   │   │   ├── ui/         # Modern shadcn/ui base components
+│   │   │   └── ...         # DashboardHeader, SkillCard, and Nav elements
+│   │   ├── hooks/          # Custom hooks (Auth state & Toast notifications)
+│   │   ├── pages/          # Full application pages (Dashboard, Admin, Assessment)
+│   │   ├── lib/            # Supabase instance & utility helper functions
+│   │   ├── App.tsx         # Root routes and providers configuration
+│   │   └── main.tsx        # Application entry point
+│   ├── public/             # Static assets and media files
+│   ├── vite.config.ts      # Vite configuration for React & TypeScript
+│   └── package.json        # Frontend project dependencies
+├── backend/                # Serverless architecture & API Bridge
+│   └── README.md           # Documentation for project backend (Supabase)
+├── database/               # Data Layer & Management
+│   ├── scripts/            # Automated seeding and synchronization tools
+│   ├── supabase/           # SQL Migrations and Supabase TOML configs
+│   ├── check-db.js         # Connection health and schema validation
+│   └── sync-real-db.js     # Data migration from local to live Supabase
+├── package.json            # Root configuration for development scripts
+└── README.md               # Main project documentation
+```
+
+---
+
 ## 👨‍💻 Developed By
 **Monish2901** - [GitHub Profile](https://github.com/Monish2901)
