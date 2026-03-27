@@ -156,27 +156,41 @@ export default function SkillDetail() {
     3: "Topics: Permutations & Combinations, Probability, Roots, Logarithms, Stocks & Shares."
   };
 
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <DashboardHeader />
+        <div className="flex items-center justify-center h-[60vh]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!skill) return null;
+
   const levelInfo = [
     { 
       level: 1, 
       title: "Basic Foundations", 
       type: "MCQ (30 questions)", 
       passing: "70%", 
-      desc: skill.name === "Aptitude" ? aptitudeTopics[1] : "" 
+      desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[1] : "" 
     },
     { 
       level: 2, 
       title: "Intermediate Applications", 
       type: "MCQ (30 questions)", 
       passing: "80%", 
-      desc: skill.name === "Aptitude" ? aptitudeTopics[2] : "" 
+      desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[2] : "" 
     },
     { 
       level: 3, 
       title: "Advanced Mastery", 
       type: "MCQ (30 questions)", 
       passing: "90%", 
-      desc: skill.name === "Aptitude" ? aptitudeTopics[3] : "" 
+      desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[3] : "" 
     },
   ];
 
@@ -200,19 +214,6 @@ export default function SkillDetail() {
     level2Passed: !!level2Best,
     avgTimeTakenSeconds: avgTime,
   });
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <DashboardHeader />
-        <div className="flex items-center justify-center h-[60vh]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
-        </div>
-      </div>
-    );
-  }
-
-  if (!skill) return null;
 
   return (
     <div className="min-h-screen bg-background">
