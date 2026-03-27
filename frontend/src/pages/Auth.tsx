@@ -45,14 +45,14 @@ export default function Auth() {
       {/* Left panel - branding */}
       <div className="hidden lg:flex lg:w-1/2 gradient-hero items-center justify-center p-12">
         <div className="max-w-md text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl gradient-accent mb-8">
-            <Brain className="w-10 h-10 text-primary-foreground" />
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-md mb-8 shadow-2xl overflow-hidden border border-white/20">
+            <img src="/skillspark-logo.png" alt="SkillSpark Logo" className="w-full h-full object-cover" />
           </div>
-          <h1 className="text-4xl font-bold font-display text-primary-foreground mb-4">
-            Student Engagement Predictor
+          <h1 className="text-5xl font-bold font-display text-white mb-4 tracking-tight">
+            SkillSpark
           </h1>
-          <p className="text-primary-foreground/80 text-lg leading-relaxed">
-            Evaluate your technical skills through structured assessments and get personalized engagement predictions.
+          <p className="text-white/90 text-lg leading-relaxed font-medium">
+            Bridging the gap between academic learning and industry readiness through intelligent assessment.
           </p>
         </div>
       </div>

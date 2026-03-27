@@ -22,15 +22,15 @@ export default function Index() {
       <section className="gradient-hero min-h-[80vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(210_80%_45%/0.15),transparent_50%)]" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl gradient-accent mb-8 shadow-glow animate-pulse-glow">
-            <Brain className="w-10 h-10 text-primary-foreground" />
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-md mb-8 shadow-2xl overflow-hidden border border-white/20">
+            <img src="/skillspark-logo.png" alt="SkillSpark Logo" className="w-full h-full object-cover" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold font-display text-primary-foreground mb-6 leading-tight">
-            Intelligent Student<br />Engagement Predictor
+          <h1 className="text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight tracking-tight">
+            SkillSpark
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/75 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Evaluate your technical skills through structured multi-level assessments.
-            Get personalized engagement predictions and skill reports.
+          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            Bridging the gap between academic learning and industry readiness.
+            Evaluate technical skills through professional-grade assessments.
           </p>
           <div className="flex gap-4 justify-center">
             <Button
@@ -76,7 +76,7 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        <p>Student Engagement Predictor • Built for Technical Skill Assessment</p>
+        <p>SkillSpark • Student Career & Assessment Platform</p>
       </footer>
     </div>
   );
