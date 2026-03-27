@@ -1,0 +1,74 @@
+[
+  {
+    "id": "14ca9458-008e-4ffb-a315-665de1719dec",
+    "name": "Java",
+    "domain": "software",
+    "description": "Object-oriented programming with Java",
+    "icon": "code",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "35c9e62a-e6db-4b16-8224-0b538326be4f",
+    "name": "Python",
+    "domain": "software",
+    "description": "Python programming and scripting",
+    "icon": "code",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "7b13eabb-2d72-4a97-acc9-334667d272a8",
+    "name": "C",
+    "domain": "software",
+    "description": "Systems programming with C",
+    "icon": "code",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "8c871f7c-8bdf-4955-91a7-88ac54143589",
+    "name": "DBMS",
+    "domain": "software",
+    "description": "Database management systems",
+    "icon": "database",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "2e00e46a-5f94-4f93-b193-ed32adb3ebec",
+    "name": "HTML",
+    "domain": "software",
+    "description": "Web markup with HTML5",
+    "icon": "globe",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "840d76c8-50c6-44c6-8676-1a980178aeaf",
+    "name": "CSS",
+    "domain": "software",
+    "description": "Styling and layout with CSS3",
+    "icon": "palette",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "a5f5278a-2d72-435d-b0c8-796a574d0083",
+    "name": "Digital Electronics",
+    "domain": "hardware",
+    "description": "Logic gates, circuits, and digital systems",
+    "icon": "cpu",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "33df28df-acee-41a4-8b4c-7d81bcfc27a3",
+    "name": "Analog Electronics",
+    "domain": "hardware",
+    "description": "Analog circuit design and analysis",
+    "icon": "zap",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  },
+  {
+    "id": "064333e6-ebfe-429c-a532-a60aebca9d79",
+    "name": "Embedded Systems",
+    "domain": "hardware",
+    "description": "Microcontrollers and embedded programming",
+    "icon": "chip",
+    "created_at": "2026-03-07T06:33:16.288169+00:00"
+  }
+]
