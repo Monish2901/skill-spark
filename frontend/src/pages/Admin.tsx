@@ -28,6 +28,13 @@ import {
   computerArchL1, computerArchL2, computerArchL3,
   pcbDesignL1, pcbDesignL2, pcbDesignL3 
 } from "@/lib/hardware-mcq";
+import { 
+  htmlL2, htmlL3, cssL2, cssL3, dbmsL2, dbmsL3, cL2, cL3,
+  digitalElectronicsL2, digitalElectronicsL3,
+  analogElectronicsL2, analogElectronicsL3,
+  embeddedSystemsL2, embeddedSystemsL3
+} from "@/lib/additional-mcqs";
+
 
 interface Skill {
   id: string;
@@ -160,6 +167,13 @@ export default function Admin() {
         "Computer Architecture-1": computerArchL1, "Computer Architecture-2": computerArchL2, "Computer Architecture-3": computerArchL3,
         "PCB Design-1": pcbDesignL1, "PCB Design-2": pcbDesignL2, "PCB Design-3": pcbDesignL3,
         "Communication Skills-1": communicationL1,
+        "HTML-2": htmlL2, "HTML-3": htmlL3,
+        "CSS-2": cssL2, "CSS-3": cssL3,
+        "DBMS-2": dbmsL2, "DBMS-3": dbmsL3,
+        "C-2": cL2, "C-3": cL3,
+        "Digital Electronics-2": digitalElectronicsL2, "Digital Electronics-3": digitalElectronicsL3,
+        "Analog Electronics-2": analogElectronicsL2, "Analog Electronics-3": analogElectronicsL3,
+        "Embedded Systems-2": embeddedSystemsL2, "Embedded Systems-3": embeddedSystemsL3,
       };
 
       [1, 2, 3].forEach(lvl => {
@@ -282,9 +296,17 @@ export default function Admin() {
   async function handleAddQuestion() {
     let options = null;
     let correctAnswer = newQuestion.expected_answer;
-    let qType = newQuestion.level === 1 ? "mcq" : newQuestion.level === 2 ? "theory" : "practical";
+    
+    // For technical skills, all levels are now MCQ
+    const skillName = getSkillName(newQuestion.skill_id);
+    const isSpecialCase = skillName === "Aptitude" || skillName === "Communication Skills";
+    let qType = "mcq";
+    
+    if (isSpecialCase) {
+      qType = newQuestion.level === 1 ? "mcq" : newQuestion.level === 2 ? "theory" : "practical";
+    }
 
-    if (newQuestion.level === 1) {
+    if (qType === "mcq") {
       options = [
         { text: newQuestion.option1, is_correct: newQuestion.correct_option === "0" },
         { text: newQuestion.option2, is_correct: newQuestion.correct_option === "1" },
@@ -447,7 +469,8 @@ export default function Admin() {
                           <Input value={newQuestion.question_text} onChange={e => setNewQuestion(p => ({ ...p, question_text: e.target.value }))} />
                         </div>
 
-                        {newQuestion.level === 1 && (
+                        {/* Updated to show MCQ options for all levels if qType is mcq */}
+                        {(newQuestion.level === 1 || (getSkillName(newQuestion.skill_id) !== "Aptitude" && getSkillName(newQuestion.skill_id) !== "Communication Skills")) && (
                           <div className="space-y-4 pt-2 border-t border-border/30">
                             <div>
                               <Label>Option 1</Label>
@@ -480,7 +503,7 @@ export default function Admin() {
                           </div>
                         )}
 
-                        {newQuestion.level === 2 && (
+                        {newQuestion.level === 2 && (getSkillName(newQuestion.skill_id) === "Aptitude" || getSkillName(newQuestion.skill_id) === "Communication Skills") && (
                           <div className="space-y-4 pt-2 border-t border-border/30">
                             <div>
                               <Label>Expected Answer (Simplified)</Label>
@@ -493,7 +516,7 @@ export default function Admin() {
                           </div>
                         )}
 
-                        {newQuestion.level === 3 && (
+                        {newQuestion.level === 3 && (getSkillName(newQuestion.skill_id) === "Aptitude" || getSkillName(newQuestion.skill_id) === "Communication Skills") && (
                           <div className="space-y-4 pt-2 border-t border-border/30">
                             <div>
                               <Label>Task Description</Label>

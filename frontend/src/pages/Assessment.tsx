@@ -36,6 +36,13 @@ import {
   computerArchL1, computerArchL2, computerArchL3,
   pcbDesignL1, pcbDesignL2, pcbDesignL3 
 } from "@/lib/hardware-mcq";
+import { 
+  htmlL2, htmlL3, cssL2, cssL3, dbmsL2, dbmsL3, cL2, cL3,
+  digitalElectronicsL2, digitalElectronicsL3,
+  analogElectronicsL2, analogElectronicsL3,
+  embeddedSystemsL2, embeddedSystemsL3
+} from "@/lib/additional-mcqs";
+
 
 export default function Assessment() {
   const { skillId, level } = useParams<{ skillId: string; level: string }>();
@@ -98,6 +105,13 @@ export default function Assessment() {
     "Computer Architecture-1": computerArchL1, "Computer Architecture-2": computerArchL2, "Computer Architecture-3": computerArchL3,
     "PCB Design-1": pcbDesignL1, "PCB Design-2": pcbDesignL2, "PCB Design-3": pcbDesignL3,
     "Communication Skills-1": communicationL1,
+    "HTML-2": htmlL2, "HTML-3": htmlL3,
+    "CSS-2": cssL2, "CSS-3": cssL3,
+    "DBMS-2": dbmsL2, "DBMS-3": dbmsL3,
+    "C-2": cL2, "C-3": cL3,
+    "Digital Electronics-2": digitalElectronicsL2, "Digital Electronics-3": digitalElectronicsL3,
+    "Analog Electronics-2": analogElectronicsL2, "Analog Electronics-3": analogElectronicsL3,
+    "Embedded Systems-2": embeddedSystemsL2, "Embedded Systems-3": embeddedSystemsL3,
   };
 
   const specializedKey = `${skillName}-${levelNum}`;
