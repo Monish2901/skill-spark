@@ -175,21 +175,21 @@ export default function SkillDetail() {
   const levelInfo = [
     { 
       level: 1, 
-      title: "Basic Foundations", 
+      title: "Basic Foundations" + (isExempt ? "" : " (Easy)"), 
       type: "MCQ (30 questions)", 
       passing: skill.name === "Communication Skills" ? "90%" : "70%", 
       desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[1] : "" 
     },
     { 
       level: 2, 
-      title: "Intermediate Applications", 
+      title: "Intermediate Applications" + (isExempt ? "" : " (Medium)"), 
       type: "MCQ (30 questions)", 
       passing: isExempt ? "70%" : "80%", 
       desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[2] : "" 
     },
     { 
       level: 3, 
-      title: "Advanced Mastery", 
+      title: "Advanced Mastery" + (isExempt ? "" : " (Hard)"), 
       type: "MCQ (30 questions)", 
       passing: isExempt ? "70%" : "90%", 
       desc: skill.name === "Aptitude" ? (aptitudeTopics as any)[3] : "" 
