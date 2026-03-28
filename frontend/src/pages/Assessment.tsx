@@ -101,72 +101,84 @@ export default function Assessment() {
   };
 
   const specializedKey = `${skillName}-${levelNum}`;
+  
+  // Define pass marks based on level and skill
+  const isExempt = skillName === "Aptitude" || skillName === "Communication Skills";
+  let passPercentage = 70;
+  if (!isExempt) {
+    if (levelNum === 2) passPercentage = 80;
+    if (levelNum === 3) passPercentage = 90;
+  } else if (skillName === "Communication Skills") {
+    passPercentage = 90;
+  }
+
+  // 1. Check for specialized MCQ content first
   if (specializedMcqs[specializedKey]) {
     const questions = specializedMcqs[specializedKey];
     
-    // Common skills (Communication, GK, Aptitude) customized evaluation
-    const commonSkills = ["Communication Skills", "General Knowledge (GK)", "Aptitude"];
-    if (commonSkills.includes(skillName)) {
+    return (
+      <MCQAssessment 
+        skillId={skillId!} 
+        skillName={skillName} 
+        level={levelNum} 
+        questions={skillName === "Communication Skills" ? questions : questions.slice(0, 30)} 
+        userId={user!.id} 
+        passage={skillName === "Communication Skills" ? communicationPassage : undefined}
+        passPercentage={passPercentage}
+        disableNegativeMarking={isExempt}
+      />
+    );
+  }
+
+  // 2. For regular skills (non-exempt), always use MCQ for all levels
+  if (!isExempt) {
+    // Try to get questions from sampleQuestions (Level 1 source)
+    // We'll use the same pool but maybe slice differently or just take the first 30
+    const questions = sampleQuestions[skillName];
+    if (questions && questions.length > 0) {
       return (
         <MCQAssessment 
           skillId={skillId!} 
           skillName={skillName} 
           level={levelNum} 
-          questions={questions} 
-          userId={user!.id} 
-          passage={skillName === "Communication Skills" ? communicationPassage : undefined}
-          passPercentage={skillName === "Communication Skills" ? 90 : 70}
-          disableNegativeMarking={true}
+          questions={questions.slice(0, 30)} 
+          userId={user!.id}
+          passPercentage={passPercentage}
         />
       );
     }
-
-    return <MCQAssessment skillId={skillId!} skillName={skillName} level={levelNum} questions={questions.slice(0, 30)} userId={user!.id} />;
   }
 
-  // Handle Level 3 Practical for other skills
+  // 3. Fallback/Original logic for exempt skills or missing data
+  
+  // Handle Level 3 Practical for original skills
   if (levelNum === 3) {
     const tasks = practicalAssessments[skillName];
-    if (!tasks || tasks.length === 0) {
-      return (
-        <div className="min-h-screen bg-background">
-          <DashboardHeader />
-          <div className="flex items-center justify-center h-[60vh]">
-            <p className="text-muted-foreground">No practical tasks available for {skillName} yet.</p>
-          </div>
-        </div>
-      );
+    if (tasks && tasks.length > 0) {
+      return <PracticalAssessment skillId={skillId!} skillName={skillName} tasks={tasks} userId={user!.id} />;
     }
-    return <PracticalAssessment skillId={skillId!} skillName={skillName} tasks={tasks} userId={user!.id} />;
   }
 
+  // Handle Level 2 Theory for original skills
   if (levelNum === 2) {
     const questions = theoryQuestions[skillName];
-    if (!questions || questions.length === 0) {
-      return (
-        <div className="min-h-screen bg-background">
-          <DashboardHeader />
-          <div className="flex items-center justify-center h-[60vh]">
-            <p className="text-muted-foreground">No theory questions available for {skillName} yet.</p>
-          </div>
-        </div>
-      );
+    if (questions && questions.length > 0) {
+      return <TheoryAssessment skillId={skillId!} skillName={skillName} questions={questions} userId={user!.id} />;
     }
-    return <TheoryAssessment skillId={skillId!} skillName={skillName} questions={questions} userId={user!.id} />;
   }
 
-  // Level 1 - MCQ
+  // Final fallback to Level 1 MCQ or Error
   const questions = sampleQuestions[skillName];
   if (!questions || questions.length === 0) {
     return (
       <div className="min-h-screen bg-background">
         <DashboardHeader />
         <div className="flex items-center justify-center h-[60vh]">
-          <p className="text-muted-foreground">No MCQ available for {skillName} yet.</p>
+          <p className="text-muted-foreground">No assessment available for {skillName} at Level {levelNum} yet.</p>
         </div>
       </div>
     );
   }
-  return <MCQAssessment skillId={skillId!} skillName={skillName} questions={questions.slice(0, 30)} userId={user!.id} />;
+  return <MCQAssessment skillId={skillId!} skillName={skillName} level={levelNum} questions={questions.slice(0, 30)} userId={user!.id} passPercentage={passPercentage} />;
 }
 

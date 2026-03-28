@@ -227,7 +227,7 @@ export default function MCQAssessment({
       <main className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-xl font-bold font-display">{skillName} – Level 1</h1>
+            <h1 className="text-xl font-bold font-display">{skillName} – Level {level}</h1>
             <p className="text-sm text-muted-foreground">MCQ Assessment • {questions.length} Questions</p>
           </div>
           <div className="flex items-center gap-3">
